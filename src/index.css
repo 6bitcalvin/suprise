@@ -1,0 +1,54 @@
+/* Import fonts for different themes */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@400;700&display=swap');
+
+:root {
+  /* Lora is a beautiful, readable font for the main theme */
+  font-family: 'Lora', serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+  cursor: default;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+}
+
+/* Enable smooth scrolling when content loads */
+body.content-loaded {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for a cleaner look */
+body::-webkit-scrollbar { display: none; }
+body { -ms-overflow-style: none; scrollbar-width: none; }
+
+
+h1 {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 3.2em;
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 700;
+  font-family: 'Lora', serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}

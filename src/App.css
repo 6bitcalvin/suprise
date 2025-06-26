@@ -1,0 +1,124 @@
+/* --- Keyframe Animations --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes magical-entry {
+  from { opacity: 0; transform: translateY(50px) scale(0.9) rotateZ(-3deg); }
+  to { opacity: 1; transform: translateY(0) scale(1) rotateZ(0deg); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 5px rgba(255, 255, 255, 0.2) inset; }
+  50% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.9), 0 0 10px rgba(255, 255, 255, 0.4) inset; }
+  100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 5px rgba(255, 255, 255, 0.2) inset; }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-15px);}
+  60% {transform: translateY(-10px);}
+}
+
+@keyframes glitch-in {
+  0% { transform: translate(-5px, 5px) skewX(5deg); opacity: 0.5; }
+  25% { transform: translate(5px, -5px) skewY(-5deg); }
+  50% { transform: translate(0, 0) skewX(0); opacity: 1; }
+  75% { transform: translate(3px, -3px) skewX(2deg); }
+  100% { transform: translate(0, 0) skewY(0); }
+}
+
+/* Layered Starfield Background */
+@keyframes move-stars-1 { from { background-position: 0 0; } to { background-position: 0 -10000px; } }
+@keyframes move-stars-2 { from { background-position: 0 0; } to { background-position: 0 -10000px; } }
+@keyframes move-stars-3 { from { background-position: 0 0; } to { background-position: 0 -10000px; } }
+
+.stars, .stars2, .stars3 {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; display: block; z-index: -1;
+}
+.stars { background: transparent url(https://www.transparenttextures.com/patterns/stardust.png) repeat top center; animation: move-stars-1 200s linear infinite; }
+.stars2 { background: transparent url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png) repeat top center; animation: move-stars-2 150s linear infinite; }
+.stars3 { background: transparent url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds.png) repeat top center; animation: move-stars-3 100s linear infinite; }
+
+/* --- Start Screen & Video --- */
+.start-screen {
+  position: fixed; z-index: 2000; width: 100vw; height: 100vh; display: flex;
+  justify-content: center; align-items: center; flex-direction: column; text-align: center;
+  background: radial-gradient(ellipse at center, rgba(27, 39, 53, 0.8) 0%, rgba(9, 10, 15, 1) 100%);
+  animation: fadeIn 1.5s ease-in-out;
+}
+.start-content h1 { color: #FFD700; text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700; }
+.start-button {
+  padding: 15px 30px; font-size: 1.5em; font-weight: bold; color: #1B2735;
+  background: linear-gradient(145deg, #ffe066, #ffd700);
+  border: none; border-radius: 50px; text-shadow: none;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), -5px -5px 15px rgba(255, 235, 153, 0.2) inset;
+  transition: all 0.3s ease-in-out;
+}
+.start-button:hover {
+  transform: scale(1.1); box-shadow: 0 0 35px rgba(255, 215, 0, 0.8), -5px -5px 20px rgba(255, 235, 153, 0.3) inset;
+}
+.video-container {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #000; display: flex; justify-content: center; align-items: center; z-index: 1000;
+}
+.intro-video { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- Main Content & Shared Card Styling --- */
+.main-content { width: 100%; display: flex; flex-direction: column; align-items: center; padding: 5vh 0; }
+.card-section { min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+.virtual-card { display: flex; align-items: stretch; gap: 25px; max-width: 1100px; width: 90%; padding: 25px; opacity: 0; }
+.card-image-container { flex: 0 0 45%; border-radius: 15px; overflow: hidden; box-shadow: inset 0 0 15px rgba(0,0,0,0.5); }
+.card-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-text-container { flex: 1; padding: 15px 25px; display: flex; align-items: center; justify-content: center; }
+
+/* --- Disney Themed Cards --- */
+.your-card, .gus-gus-card {
+  background: url(https://www.transparenttextures.com/patterns/stardust.png), radial-gradient(circle, #1B2735 0%, #090A0F 100%);
+  border-style: solid; border-width: 10px; border-image: linear-gradient(145deg, #c8a45c, #f0e6d2, #c8a45c) 1; border-image-slice: 1;
+  animation: magical-entry 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards, pulse-glow 5s infinite 2s;
+}
+.gus-gus-card { flex-direction: row-reverse; }
+.your-card .card-text, .gus-gus-card .card-text {
+  color: #f0e6d2; font-size: 1.8em; line-height: 1.6; text-align: left; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* --- Drifter Themed Card --- */
+.drifter-card {
+  background: url(https://www.transparenttextures.com/patterns/clean-gray-paper.png), linear-gradient(180deg, #3a4a3a, #1a2a1a);
+  border: 4px solid #333;
+  border-top: 20px solid #333; /* For that datapad look */
+  border-bottom: 20px solid #333;
+  border-radius: 10px;
+  box-shadow: inset 0 0 20px #000;
+  animation: glitch-in 1s ease-out forwards;
+}
+.drifter-card .card-image-container { border: 2px solid #556655; }
+.drifter-card .card-text-container {
+  border-left: 2px dashed #55ff55;
+  padding-left: 20px;
+}
+.drifter-text {
+  font-family: 'Orbitron', sans-serif;
+  color: #c2f0c2;
+  font-size: 1.6em !important;
+  text-shadow: 0 0 5px #55ff55, 0 0 10px #55ff55;
+  line-height: 1.5 !important;
+}
+
+/* --- Scroll Indicator --- */
+.scroll-indicator {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+  color: #FFD700; text-align: center; animation: fadeIn 2s 2.5s ease-out forwards; opacity: 0;
+}
+.scroll-indicator span { font-size: 1em; }
+.scroll-indicator .arrow {
+  width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent;
+  border-top: 10px solid #FFD700; margin: 10px auto 0; animation: bounce 2s infinite;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .virtual-card, .gus-gus-card { flex-direction: column; }
+  .drifter-card { flex-direction: column; }
+  .card-text, .drifter-text { font-size: 1.4em !important; text-align: center; }
+  .drifter-card .card-text-container { border-left: none; border-top: 2px dashed #55ff55; padding-left: 0; padding-top: 20px;}
+}
